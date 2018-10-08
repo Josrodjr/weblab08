@@ -8,13 +8,14 @@ class Users (models.Model):
   username = models.CharField(max_length=25)
   name = models.CharField(max_length=50)
   password = models.CharField(max_length=25)
-
+  email = models.CharField(max_length=50)
 #nombre appellido email username
 
 class Posts (models.Model):
   title = models.CharField(max_length=50)
   post_info = models.CharField(max_length=125)
-  likes = models.ManyToManyField(Users, through='PostUserLike')
+  #likes = models.ManyToManyField(Users, through='PostUserLike')
+  iduser = models.ForeignKey(Users, null= False, on_delete=models.CASCADE)
   date = models.DateField(auto_now=True)
 
 class PostUserLike(models.Model):
